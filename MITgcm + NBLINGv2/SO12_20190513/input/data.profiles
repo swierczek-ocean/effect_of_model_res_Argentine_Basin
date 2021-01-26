@@ -1,0 +1,20 @@
+#
+#
+# ******************
+# PROFILES cost f',tion
+# ******************
+ &PROFILES_NML
+#CMM
+#CMM
+ profilesDir = 'PROF', 
+ profilesfiles(01) = 'USGO_WO_2017_PFL_D',
+ profilesfiles(02) = 'VIZ_SO_2017_PFL',
+ profilesfiles(03) = 'GLODAPv2climyr2017',
+ profilesfiles(04) = 'HDOBOTclim_2017',
+ profilesfiles(05) = 'HDO_CTD_CHL_clim_2017',
+ profilesfiles(06) = 'HDO_CTD_old_clim_2017',
+ profilesfiles(07) = 'SIO_clim_2017',
+ profilesfiles(08) = 'VIZclim_2017',
+ profilesfiles(09) = 'USGO_SO_2017_PFL_D',
+ profilesfiles(10) = 'USGO_clim_2017'
+/

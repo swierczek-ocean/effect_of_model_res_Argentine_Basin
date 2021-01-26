@@ -1,0 +1,74 @@
+# SEAICE parameters
+# from http://mitgcm.org/viewvc/MITgcm/MITgcm_contrib/llc_hires/llc_270/input_ad/data.seaice
+#
+ &SEAICE_PARM01
+      SEAICEuseTILT=.FALSE.,
+      SEAICEpresH0=2.,
+      SEAICEpresPow0=1,
+      SEAICEpresPow1=3,
+      SEAICE_multDim=1,
+      SEAICErestoreUnderIce=.TRUE.,
+      SEAICE_area_max=0.95,      
+      SEAICE_salt0=4.,
+#      HO = 0.05,
+
+      LSR_ERROR          = 2.e-4,
+      SEAICEuseDYNAMICS  = .TRUE.,
+#      SEAICE_strength = 1.e4,
+
+      MIN_ATEMP          = -40.,
+      MIN_TICE           = -40.,
+      SEAICEadvScheme    = 30,
+      SEAICEuseFluxForm = .TRUE.,
+      SEAICEadvSnow      = .TRUE.,
+
+      SEAICEdiffKhHeff   = 400.,
+      SEAICEdiffKhArea   = 400.,
+      SEAICEdiffKhSnow   = 400.,
+
+      SEAICEuseFlooding  = .TRUE.,
+      SEAICE_mcPheePiston= 3.858024691358025E-05,
+      SEAICE_frazilFrac  = 1.,
+      SEAICE_mcPheeTaper = 0.,
+      SEAICE_areaLossFormula=2,
+      SEAICEheatConsFix  = .TRUE.,
+      SEAICE_tempFrz0    = -1.96,
+      SEAICE_dTempFrz_dS = 0.,
+      SEAICEuseMetricTerms = .TRUE.,
+      SEAICE_no_slip     = .FALSE.,
+      SEAICE_clipVelocities = .TRUE.,
+
+      SEAICE_dryIceAlb_south   = 0.75
+      SEAICE_wetIceAlb_south   = 0.66
+      SEAICE_drySnowAlb_south  = 0.84
+      SEAICE_wetSnowAlb_south  = 0.7 
+
+# BELOW THIS IS MY OWN
+#
+      AreaFile  = 'AREA_init_frm105v1.bin',
+      HeffFile  = 'HEFF_init_frm105v1.bin',
+ /
+
+ &SEAICE_PARM02
+ mult_smrsst       =  0.2
+ mult_smrsss       =  0.2
+ mult_smrarea      =  1.0
+# smrareadatfile = 'SO3input/SO3_IceConc_NASA_05to10.bin',
+# smrareastartdate1  = 20050101,
+# smrareastartdate2  = 00000,
+# smrareaperiod = 86400,
+# wsmrarea0 = 0.5,
+# wmean_smrarea = 0.5,
+# smrarea_errfile = ' ',
+#CMM(
+# costIceStart1 =  20080101,
+# costIceStart2 =  00000,
+# costIceEnd1   =  20120101,
+# costIceEnd2   = 00000,
+#CMM)
+ /
+
+ &SEAICE_PARM03
+ /
+#
+

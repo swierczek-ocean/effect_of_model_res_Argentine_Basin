@@ -1,0 +1,22 @@
+#
+# ********************************
+# Smoothing options and what-not 
+# ********************************
+ &SMOOTH_NML
+ smooth2Dnbt(1)=2000,
+ smooth2D_Lx0(1)=60000.,
+ smooth2D_Ly0(1)=60000.,
+ smooth2Dtype(1)=1,
+ smooth2Dsize(1)=0,
+ smooth2Dfilter(1)=0,
+# and for 3D
+ smooth3Dnbt(1)=2000,
+ smooth3D_Lx0(1)=20000.,
+ smooth3D_Ly0(1)=20000.,
+ smooth3D_Lz0(1)=10.,
+ smooth3DtypeH(1)=1,
+ smooth3DsizeH(1)=0,
+ smooth3DtypeZ(1)=1,
+ smooth3DsizeZ(1)=0,
+ smooth3Dfilter(1)=0,
+ /

@@ -1,0 +1,199 @@
+# Diagnostic Package Choices
+#-----------------
+# for each output-stream:
+#  filename(n) : prefix of the output file name (only 8.c long) for outp.stream n
+#  frequency(n):< 0 : write snap-shot output every |frequency| seconds
+#               > 0 : write time-average output every frequency seconds
+#  timePhase(n)     : write at time = timePhase + multiple of |frequency|
+#  levels(:,n) : list of levels to write to file (Notes: declared as REAL)
+#                 when this entry is missing, select all common levels of this list
+#  fields(:,n) : list of diagnostics fields (8.c) (see "available_diagnostics.log"
+#                 file for the list of all available diag. in this particular config)
+#-----------------
+ &diagnostics_list
+# diag_mnc     = .FALSE.,
+# do not specify levels => all levels are selected
+#---
+   frequency(1) = 2628000.0,
+   fields(1,1) = 'THETA   ',
+                 'SALT    ',
+                 'UVEL    ',
+                 'VVEL    ',
+                 'WVEL    ',
+                 'PHIHYD  ',
+                 'DRHODR  ',
+   filename(1) = '../diag/diag_state',
+#
+    frequency(2) = 2628000.0,
+    fields(1,2) = 'TRAC01  ',
+                  'TRAC02  ',
+                  'TRAC03  ',
+                  'TRAC04  ',
+                  'TRAC05  ',
+                  'TRAC06  ',
+                  'TRAC07  ',
+                  'TRAC08  ',
+                  'TRAC09  ',
+                  'BLGPH3D ',
+                  'BLGPOC  ',
+                  'BLGOMAR ',
+#                  'BLGFESED',
+#                  'BLGPDIA ',
+#                  'BLGFELIM',
+#                  'BLGNLIM ',
+#                  'BLGPLIM ',
+#                  'BLGMUDIA',
+    filename(2) = '../diag/diag_bgc',
+#                    
+    frequency(3) = 86400.0,
+    fields(1,3) = 'ETAN    ',
+                  'BLGPCO2 ',
+#                  'SIarea  ',
+#                  'SIheff  ',
+                  'PHIBOT  ',
+#                  'BLGO2SAT',
+#                  'SIuice  ',
+#                  'SIvice  ',
+#                  'SIuheff ',
+#                  'SIvheff ',
+#                  'SItr01  ',
+                  'BLGMLD  ',
+     filename(3) = '../diag/diag_surf',
+#
+    frequency(4) = 2628000.0,
+    fields(1,4) = 'TFLUX   ',
+                  'SFLUX   ', 
+                  'BLGCFLX ',
+                  'BLGOFLX ',
+#                  'Add2EmP ',
+                  'oceTAUX ',
+                  'oceTAUY ',
+                  'oceFWflx',
+                  'oceSflux',
+                  'oceQnet ',
+                  'oceQsw  ',
+                  'oceFreez',
+                  'oceSPflx',
+#                  'PHIBOT  ',
+#                  'SIempmr ',
+#                  'SIatmFW ',
+#                  'SIsnPrcp',
+                  'BLGSURFE',
+    filename(4) = '../diag/diag_airsea',
+#
+   frequency(5) = 2628000.0,
+   fields(1,5) = 'BLGNCP  ',
+                 'BLGNPP  ',
+                 'BLGNFIX ',
+                 'BLGCHL  ',
+                 'BLGPSM  ',
+                 'BLGPLG  ',
+                 'BLGPOC  ',
+#                 'BLGPDIA ',
+#                 'BLGMU   ',
+#                 'BLGMUDIA',
+#                 'BLGFELIM',
+#                 'BLGNLIM ',
+#                 'BLGPLIM ',
+#                 'BLGLLIM ',
+   filename(5) = '../diag/diag_bio',
+#
+#   frequency(6) = 86400.0,
+#   fields(1,6)  = 'BLGPOC  ',
+#   fields(1,6)  = 'BLGCHL  ',
+#   levels(1:12,6) = 1., 2., 3., 4., 5., 6., 7., 8., 9., 10., 11., 12.,
+#   filename(6)  = 'diag_bgc_Opt',
+#   frequency(6) = -2628900.0,
+#   timePhase(6) = 0.0,
+#   fields(1,6)  = 'TRAC01  ',
+#                  'TRAC02  ',
+#                  'TRAC03  ',
+#                  'TRAC04  ',
+#                  'TRAC05  ',
+#                  'TRAC06  ',
+#   filename(6)  = '../diag/diag_bgc_snaps',
+#
+   frequency(6) = 2628000.0,
+   fields(1,6) = 'ADVxTr01',
+                 'ADVyTr01',
+                 'ADVrTr01',
+                 'DFxETr01',
+                 'DFyETr01',
+                 'DFrITr01',
+                 'UTRAC01 ',
+                 'VTRAC01 ',
+                 'WTRAC01 ',
+                 'BLGBIOC ',
+                 'ForcTr01',
+   filename(6) = '../diag/diag_dic_budget',
+#
+   frequency(7) = 86400.0,
+   fields(1,7) = 'UVEL    ',
+                 'VVEL    ',
+                 'WVEL    ',
+   levels(1,7) = 1.,13.,20.,25.,                                  
+   filename(7) = '../diag/diag_vel',
+#
+#   frequency(8) = 2629440.0,
+#   fields(1,8) = 'ADVxTr03',
+#                 'ADVyTr03',
+#                 'ADVrTr03',
+#                 'DFxETr03',
+#                 'DFyETr03',
+#                 'DFrITr03',
+#                 'UTRAC03 ',
+#                 'VTRAC03 ',
+#                 'WTRAC03 ',
+#                 'BLGBIOO2',
+#                 'ForcTr03',
+#   filename(8) = '../diag/diag_o2_budget',
+#
+#   frequency(9) = 2629440.0,
+#   fields(1,9) = 'ADVxTr04',
+#                 'ADVyTr04',
+#                 'ADVrTr04',
+#                 'DFxETr04',
+#                 'DFyETr04',
+#                 'DFrITr04',
+#                 'UTRAC04 ',
+#                 'VTRAC04 ',
+#                 'WTRAC04 ',
+#                 'BLGBION ',
+#                 'ForcTr04',
+#   filename(9) = '../diag/diag_no3_budget',
+#
+#   frequency(10) = 2629440.0,
+#   fields(1,10) = 'ADVxTr05',
+#                 'ADVyTr05',
+#                 'ADVrTr05',
+#                 'DFxETr05',
+#                 'DFyETr05',
+#                 'DFrITr05',
+#                 'UTRAC05 ',
+#                 'VTRAC05 ',
+#                 'WTRAC05 ',
+#                 'BLGBIOP ',
+#                 'ForcTr05',
+#   filename(10) = '../diag/diag_po4_budget',
+#
+#---
+ /
+#
+# Parameter for Diagnostics of per level statistics:
+#-----------------
+# for each output-stream:
+#  stat_fname(n) : prefix of the output file name (only 8.c long) for outp.stream n
+#  stat_freq(n):< 0 : write snap-shot output every |stat_freq| seconds
+#               > 0 : write time-average output every stat_freq seconds
+#  stat_phase(n)    : write at time = stat_phase + multiple of |stat_freq|
+#  stat_region(:,n) : list of "regions" (default: 1 region only=global)
+#  stat_fields(:,n) : list of diagnostics fields (8.c) (see "available_diagnostics.log"
+#                 file for the list of all available diag. in this particular config)
+#-----------------
+ &DIAG_STATIS_PARMS
+# an example just to check the agreement with MONITOR output:
+# stat_fields(1,1)= 'ETAN    ','UVEL    ','VVEL    ','WVEL    ', 'THETA   ',
+#    stat_fname(1)= 'dynStDiag',
+#     stat_freq(1)= -864000.,
+#    stat_phase(1)= 0.,
+ /

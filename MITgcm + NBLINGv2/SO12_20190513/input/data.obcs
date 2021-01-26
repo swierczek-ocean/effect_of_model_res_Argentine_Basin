@@ -1,0 +1,90 @@
+#
+# ***************
+# Open boundaries
+# ***************
+ &OBCS_PARM01
+ OB_Jnorth= 756*512,
+ OB_Jsouth= 756*1,
+ OB_Ieast=  512*756,
+ OB_Iwest=  512*1,
+#
+ useOrlanskiNorth=.FALSE.,
+ useOBCSsponge=.TRUE.,
+ useLinearSponge    =.TRUE.,
+ OBCSsponge_Salt=.FALSE.,
+ OBCSsponge_Theta=.FALSE.,
+ useOBCSbalance=.TRUE.,
+ useOBCSprescribe=.TRUE.,
+#
+ OBNuFile='UVEL_NBC_2013to2018_monthly_12.bin',
+ OBNvFile='VVEL_NBC_2013to2018_monthly_12.bin',
+ OBNtFile='THETA_NBC_2013to2018_monthly_12.bin',
+ OBNsFile='SALT_NBC_2013to2018_monthly_12.bin',
+ OBSuFile='UVEL_SBC_2013to2018_monthly_12.bin',
+ OBSvFile='VVEL_SBC_2013to2018_monthly_12.bin',
+ OBStFile='THETA_SBC_2013to2018_monthly_12.bin',
+ OBSsFile='SALT_SBC_2013to2018_monthly_12.bin',
+ OBEuFile='UVEL_EBC_2013to2018_monthly_12.bin',
+ OBEvFile='VVEL_EBC_2013to2018_monthly_12.bin',
+ OBEtFile='THETA_EBC_2013to2018_monthly_12.bin',
+ OBEsFile='SALT_EBC_2013to2018_monthly_12.bin',
+ OBWuFile='UVEL_WBC_2013to2018_monthly_12.bin',
+ OBWvFile='VVEL_WBC_2013to2018_monthly_12.bin',
+ OBWtFile='THETA_WBC_2013to2018_monthly_12.bin',
+ OBWsFile='SALT_WBC_2013to2018_monthly_12.bin',
+#    #
+OBNptrFile(1)='DIC_NBC_2013to2018_monthly_12.bin',
+OBSptrFile(1)='DIC_SBC_2013to2018_monthly_12.bin',
+OBEptrFile(1)='DIC_EBC_2013to2018_monthly_12.bin',
+OBWptrFile(1)='DIC_WBC_2013to2018_monthly_12.bin',
+OBNptrFile(2)='ALK_NBC_2013to2018_monthly_12.bin',
+OBSptrFile(2)='ALK_SBC_2013to2018_monthly_12.bin',
+OBEptrFile(2)='ALK_EBC_2013to2018_monthly_12.bin',
+OBWptrFile(2)='ALK_WBC_2013to2018_monthly_12.bin',
+OBNptrFile(3)='O2_NBC_2013to2018_monthly_12.bin',
+OBSptrFile(3)='O2_SBC_2013to2018_monthly_12.bin',
+OBEptrFile(3)='O2_EBC_2013to2018_monthly_12.bin',
+OBWptrFile(3)='O2_WBC_2013to2018_monthly_12.bin',
+OBNptrFile(4)='NO3_NBC_2013to2018_monthly_12.bin',
+OBSptrFile(4)='NO3_SBC_2013to2018_monthly_12.bin',
+OBEptrFile(4)='NO3_EBC_2013to2018_monthly_12.bin',
+OBWptrFile(4)='NO3_WBC_2013to2018_monthly_12.bin',
+OBNptrFile(5)='PO4_NBC_2013to2018_monthly_12.bin',
+OBSptrFile(5)='PO4_SBC_2013to2018_monthly_12.bin',
+OBEptrFile(5)='PO4_EBC_2013to2018_monthly_12.bin',
+OBWptrFile(5)='PO4_WBC_2013to2018_monthly_12.bin',
+OBNptrFile(6)='FE_NBC_2013to2018_monthly_12.bin',
+OBSptrFile(6)='FE_SBC_2013to2018_monthly_12.bin',
+OBEptrFile(6)='FE_EBC_2013to2018_monthly_12.bin',
+OBWptrFile(6)='FE_WBC_2013to2018_monthly_12.bin',
+OBNptrFile(7)='DON_NBC_2013to2018_monthly_12.bin',
+OBSptrFile(7)='DON_SBC_2013to2018_monthly_12.bin',
+OBEptrFile(7)='DON_EBC_2013to2018_monthly_12.bin',
+OBWptrFile(7)='DON_WBC_2013to2018_monthly_12.bin',
+OBNptrFile(8)='DOP_NBC_2013to2018_monthly_12.bin',
+OBSptrFile(8)='DOP_SBC_2013to2018_monthly_12.bin',
+OBEptrFile(8)='DOP_EBC_2013to2018_monthly_12.bin',
+OBWptrFile(8)='DOP_WBC_2013to2018_monthly_12.bin',
+OBNptrFile(9)='PHYTO_SM_NBC_2013to2018_monthly_12.bin',
+OBSptrFile(9)='PHYTO_SM_SBC_2013to2018_monthly_12.bin',
+OBEptrFile(9)='PHYTO_SM_EBC_2013to2018_monthly_12.bin',
+OBWptrFile(9)='PHYTO_SM_WBC_2013to2018_monthly_12.bin',
+ /
+# *****************************************
+# Orlanski Boundary Condition Parameters.
+# *****************************************
+ &OBCS_PARM02
+# cvelTimeScale = 2000.,
+ /
+
+# *****************************************
+# Sponge Layer Parameters.
+# *****************************************
+ &OBCS_PARM03
+ Urelaxobcsinner=432000.E0,
+ Urelaxobcsbound=172800.E0,
+ Vrelaxobcsinner=432000.E0,
+ Vrelaxobcsbound=172800.E0,
+ spongeThickness=15,
+ /
+

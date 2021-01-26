@@ -1,0 +1,70 @@
+
+running: look_for_makedepend()
+ --> set MAKEDEPEND=$(TOOLSDIR)/xmakedepend
+
+running: check_HAVE_CLOC()
+ running: get_fortran_c_namemangling()
+ icc -c genmake_test.c
+genmake_test.c(1): warning #266: function "tsub" declared implicitly
+  void tcall( char * string ) { tsub( string ); }
+                                ^
+
+ mpiifort -mcmodel=medium -convert big_endian -assume byterecl -c genmake_tcomp.f
+ --> set FC_NAMEMANGLE='#define FC_NAMEMANGLE(X)  X ## _'
+icc -c genmake_tc_1.c
+mpiifort -mcmodel=medium -convert big_endian -assume byterecl -o genmake_tc genmake_tc_2.f genmake_tc_1.o
+  HELLO WORLD   1567118792.71313     
+ --> set HAVE_CLOC='t'
+
+running: check_HAVE_SETRLSTK()
+icc -c genmake_tc_1.c
+      program hello
+      external setrlstk
+      call setrlstk()
+      end
+mpiifort -mcmodel=medium -convert big_endian -assume byterecl -o genmake_tc genmake_tc_2.f genmake_tc_1.o
+ --> set HAVE_SETRLSTK='t'
+
+running: check_HAVE_SIGREG()
+icc -c genmake_tc_1.c
+      program hello
+      integer anint
+      common /iv/ anint
+      external sigreg
+      call sigreg(anint)
+      end
+mpiifort -mcmodel=medium -convert big_endian -assume byterecl -o genmake_tc genmake_tc_2.f genmake_tc_1.o
+ --> set HAVE_SIGREG='t'
+
+running: check_HAVE_STAT()
+icc -c genmake_tc_1.c
+      program hello
+      integer nbyte
+      call tfsize(nbyte)
+      print *," HELLO WORLD", nbyte
+      end
+mpiifort -mcmodel=medium -convert big_endian -assume byterecl -o genmake_tc genmake_tc_2.f genmake_tc_1.o
+ --> set HAVE_STAT='t'
+
+running: check_netcdf_libs()
+===  genmake_tnc.F  >>>
+      program fgennc
+#include "netcdf.inc"
+      integer iret, ncid, xid
+      iret = nf_create('genmake_tnc.nc', NF_CLOBBER, ncid)
+      IF (iret .NE. NF_NOERR) write(*,*) NF_STRERROR(iret)
+      iret = nf_def_dim(ncid, 'X', 11, xid)
+      IF (iret .NE. NF_NOERR) write(*,*) NF_STRERROR(iret)
+      iret = nf_close(ncid)
+      IF (iret .NE. NF_NOERR) write(*,*) NF_STRERROR(iret)
+      end
+<<<  genmake_tnc.F  ===
+cat genmake_tnc.F |  /usr/bin/cpp  -traditional -P -DALLOW_USE_MPI -DALWAYS_USE_MPI -DWORDLENGTH=4 -DALLOW_USE_MPI -DHAVE_SYSTEM -DHAVE_FDATE -DHAVE_ETIME_FCT -DHAVE_CLOC -DHAVE_SETRLSTK -DHAVE_SIGREG -DHAVE_STAT -I/cm/shared/uaapps/netcdf/fortran/intel/4.4.4/include -I/cm/shared/apps/netcdf/intel/64/4.4.0/include -I/cm/shared/apps/intel/compilers_and_libraries/current/mpi/intel64/include
+mpiifort   -mcmodel=medium -convert big_endian -assume byterecl   -c genmake_tnc.f  \ 
+  &&  mpiifort   -mcmodel=medium -convert big_endian -assume byterecl   -o genmake_tnc.o -L/cm/shared/uaapps/netcdf/fortran/intel/4.4.4/lib  -L/cm/shared/apps/netcdf/intel/64/4.4.0/lib -lnetcdf -lnetcdff -L/cm/shared/apps/intel/compilers_and_libraries/current/mpi/intel64/lib -lmpi
+check_netcdf: successful
+ --> set HAVE_NETCDF='t'
+
+running: check_HAVE_FLUSH()
+  check_HAVE_FLUSH: successful
+ --> set HAVE_FLUSH='t'

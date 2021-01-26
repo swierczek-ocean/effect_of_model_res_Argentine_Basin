@@ -1,0 +1,163 @@
+# ====================
+# | Model parameters |
+# ====================
+#
+# Continuous equation parameters
+ &PARM01
+# viscAh=1.E1,
+# viscAhGrid=1.E-1,
+ viscA4=1.E8,
+ diffK4T=1.E8,
+ diffK4S=1.E8,
+ viscAz= 1.e-05,
+ no_slip_sides = .FALSE.,
+ no_slip_bottom = .FALSE.,
+ diffKzT=1.e-5,
+ diffKzS=1.e-5,
+ beta=1.E-11,
+ tAlpha=2.E-4,
+ sBeta =7.4E-4,
+ viscC4Leith=2.0,
+ viscC4Leithd=2.0,
+ viscA4GridMax=1.0,
+ useAreaViscLength=.TRUE.,
+ bottomDragQuadratic = 0.002,
+ beta=1.E-11,
+ tAlpha=2.E-4,
+ sBeta =7.4E-4,
+ rhonil=1035.,
+ rhoConstFresh=1000.,
+ gravity=9.81,
+ eosType = 'JMD95Z',
+ allowFreezing = .TRUE.,
+ highOrderVorticity=.TRUE.,
+ exactConserv=.TRUE.,
+ nonlinFreeSurf=4,
+ select_rStar=2,
+#when using ggl90
+ ivdc_kappa=10.,
+#
+ implicitDiffusion=.true.,
+ implicitViscosity=.true.,
+ implicitFreeSurface=.true.,
+ convertFW2Salt = -1.,
+ useRealFreshWaterFlux=.TRUE.,
+ useCDscheme=.FALSE.,
+ useSingleCpuIO=.TRUE.,
+ vectorInvariantMomentum=.TRUE.,
+ staggerTimeStep=.TRUE.,
+ multiDimAdvection=.TRUE.,
+# tempAdvScheme=7,
+# saltAdvScheme=7,
+ tempAdvScheme=33,
+ saltAdvScheme=33,
+# tempAdvScheme=30,
+# saltAdvScheme=30,
+#CMM(
+ tempVertAdvScheme=3,
+ saltVertAdvScheme=3,
+ tempImplVertAdv=.TRUE.,
+ saltImplVertAdv=.TRUE.,
+#CMM)
+ useNHMTerms=.FALSE.,
+# turn on lopped cells
+ hFacMin=0.3,
+ hFacMindz=50.,
+# set precision of data files
+ readBinaryPrec=32,
+ writeBinaryPrec=32,
+ globalfiles=.FALSE.,
+ rotationPeriod=86164.,
+ debugLevel=0,
+ /
+
+# Elliptic solver parameters
+ &PARM02
+ cg2dMaxIters = 300,
+ cg2dTargetResidual=1.E-8,
+ /
+
+# Time stepping parameters
+ &PARM03
+ nIter0 =        0,
+# nTimeSteps =  240,
+# nTimeSteps =  9024,
+# nTimeSteps =  35041,
+ nTimeSteps =  288,
+ deltaTmom   = 900.0,
+ deltaTtracer= 900.0,
+ deltaTClock = 900.0,
+ pickupStrictlyMatch=.FALSE.,
+ dumpInitAndLast=.FALSE.
+ writePickupAtEnd=.FALSE.,
+ pChkptFreq= 0.0,
+ dumpFreq=   0.,
+ taveFreq=   0.,
+# dumpFreq=   31536000.,
+# taveFreq=   31536000.,
+# diagFreq=    2629830.,
+ adjDumpFreq=  0.,
+ monitorFreq= 1800.0,
+ forcing_In_AB = .FALSE.,
+ momDissip_In_AB=.FALSE.,
+# epsAB_CD = 0.25,
+#when using ab2:
+# abEps = 0.1,
+#when using ab3:
+ doAB_onGtGs=.FALSE.,
+ alph_AB=0.5,
+ beta_AB=0.281105,
+#
+ periodicExternalForcing=.TRUE.,
+ externForcingPeriod=2629800.,
+ externForcingCycle=31557600.,
+#
+ /
+
+# Gridding parameters
+ &PARM04
+ usingCartesianGrid=.FALSE.,
+ usingSphericalPolarGrid=.TRUE.,
+ delX=192*0.333333334,
+ delY= 0.1663589, 0.1671982, 0.1680527, 0.1688881, 0.1697426, 0.1705894, 0.1714478, 
+	0.1723022, 0.1731606, 0.1740265, 0.1748924, 0.1757584, 0.1766319, 0.1774979, 
+	0.1783829, 0.1792488, 0.18013, 0.1810188, 0.1819, 0.1827888, 0.1836815, 0.1845703, 
+	0.1854706, 0.1863708, 0.1872673, 0.1881714, 0.1890793, 0.1899796, 0.1908913, 
+	0.1917992, 0.1927223, 0.1936302, 0.1945496, 0.1954689, 0.1963882, 0.1973228,
+	0.1982384, 0.1991692, 0.2000999, 0.2010307, 0.2019691, 0.2028999, 0.2038422, 
+	0.2047806, 0.205719, 0.2066612, 0.2076073, 0.2085495, 0.2095032, 0.2104492, 
+	0.2113991, 0.2123489, 0.2133026, 0.2142601, 0.21521, 0.2161674, 0.2171326, 
+	0.2180901, 0.2190475, 0.2200127, 0.2209663, 0.2219315, 0.2229004, 0.2238617, 
+	0.2248268, 0.2257919, 0.2267609, 0.2277298, 0.2286873, 0.22966, 0.2306328, 
+	0.2315979, 0.2325706, 0.2335396, 0.2345123, 0.2354774, 0.2364502, 0.2374191, 
+	0.2383919, 0.2393608, 0.2403183, 0.241291, 0.24226, 0.2432289, 0.2442017, 
+	0.2451591, 0.2461281, 0.2471008, 0.2480621, 0.2490196, 0.2499886, 0.2509499, 
+	0.2519112, 0.2528687, 0.2538223, 0.2547798, 0.2557373, 0.256691, 0.2576408, 
+	0.2585907, 0.2595406, 0.2604866, 0.2614326, 0.2623672, 0.2633133, 0.2642479, 
+	0.2651901, 0.2661209, 0.2670479, 0.2679825, 0.2689095, 0.2698288, 0.270752, 
+	0.2716675, 0.272583, 0.2734871, 0.2744026, 0.2753105, 0.276207, 0.2770996, 
+	0.2780037, 0.2788887, 0.2797775, 0.2806625, 0.2815399, 0.2824097, 0.2832794, 
+	0.2841511, 0.2850094, 0.2858696, 0.2867203, 0.287571
+
+delZ= 4.2, 5, 
+       5.9, 6.9, 8.5, 9.5, 10, 10, 10, 10, 10, 10, 
+       10, 10, 10, 10, 13, 17, 20, 20, 20, 20, 
+       20, 20, 22, 30, 38, 45, 50, 50, 53, 72, 
+       100, 100, 100, 100, 100, 150, 200, 200, 200, 220, 
+       300, 380, 400, 400, 400, 400, 400, 400, 400, 400, 
+ ygOrigin = -59.9766,
+ xgOrigin = 288.333333334,
+
+ /
+
+# Input datasets
+ &PARM05
+  bathyFile = 'Bathy_ArgBasin_3sp.bin',
+# These are from final timestep of iter 17 of optim3yr.
+  hydrogThetaFile='THETA_AB3_IC_20161128.bin'
+  hydrogSaltFile='SALT_AB3_IC_20161128.bin'
+  uVelInitFile='UVEL_AB3_IC_20161128.bin'
+  vVelInitFile='VVEL_AB3_IC_20161128.bin'
+  adTapeDir = '/tmp/',
+#  mdsioLocalDir = '/tmp/',
+ /

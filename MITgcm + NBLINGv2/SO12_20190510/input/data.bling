@@ -1,0 +1,36 @@
+# BLING parameters 
+ &ABIOTIC_PARMS
+ /
+
+ &BIOTIC_PARMS
+#  k_Fe = 8.1960E-7 (default)
+#  k_Fe = 4.0E-7,
+#  k_Fe_diaz = 7.168E-7 (default)
+#  k_Fe_diaz = 3.5E-7,
+#  Pc_0                 = 1.7 _d -5  (default)
+#  Pc_0 = 1.3E-5,
+#  Pc_0_diaz = 0.008E-5
+   Pc_0 = 1.5E-5,
+   Pc_0_diaz = 0.009E-5
+# 
+ /
+
+ &BLING_FORCING
+#  BLING_silicaFile='silica_clim_dictutorial_sose3.bin',
+  BLING_silicaFile='si_clim_woa13_so6_interp_12.bin',
+#  BLING_silicaFile='si_clim_woa13_sose3.bin',
+  BLING_ironFile = 'fe_surfflux_so6_interp_12.bin',
+  BLING_pCO2=380.5E-6,
+#
+  apco2file         = 'atm_pco2_capegrim_AB12',
+#  apco2file         = 'atm_pco2_carbontracker_SO3',
+  apco2startdate1     = 20050101,
+  apco2startdate2     = 000000,
+  apco2period         = 2635200,
+  apco2_interpMethod = 0,
+#
+  bling_psmFile   = 'phyto_sm_so6_interp_12.bin', 
+  bling_plgFile   = 'phyto_lg_so6_interp_12.bin', 
+  bling_PdiazFile = 'phyto_diaz_so6_interp_12.bin',
+#
+ /

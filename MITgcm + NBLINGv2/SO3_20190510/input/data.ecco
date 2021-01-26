@@ -1,0 +1,104 @@
+#
+#
+# ******************
+# ECCO cost function
+# ******************
+#
+ &ECCO_COST_NML
+#
+ using_cost_seaice = .TRUE.,
+ using_cost_sst = .TRUE.,
+ using_cost_altim = .TRUE.,
+#
+ cost_iprec  = 32,
+ cost_yftype = 'RL',
+#
+ /
+#
+ &ECCO_GENCOST_NML
+# MUCH SAFER TO LET STARTDATE = MODELSTARTDATE. Test OK if not using!!
+# see "MITgcm_contrib/gael/verification/global_oce_llc90/input.ecco_v4/data.ecco"
+# SEA ICE CONCENTRATION -- this is a V4 costfunction and NOT generic
+# 2 versions as first sets thing up but second uses SST instead of AREA and is recommended
+# this requires NOT changing gencost_name and setting using_cost_seaice
+ gencost_avgperiod(1)  = 'day',
+ gencost_barfile(1) = 'm_siv4_area',
+##  gencost_datafile(1) = 'NSIDC_IceConc_NASA_SO3.bin',
+ gencost_datafile(1) = 'NSIDC_CAP_IceConc_SO3',
+ gencost_errfile(1) = 'SeaIceUncrtnty_SO3.bin',
+ gencost_name(1) = 'siv4-conc',
+ gencost_spmin(1) = -999.,
+ gencost_spmax(1) = 999.,
+ gencost_spzero(1) = -9999.,
+ gencost_outputlevel(1)=1,
+ mult_gencost(1) = 0.000001,
+#
+ gencost_avgperiod(2)  = 'day',
+ gencost_barfile(2) = 'm_siv4_deconc',
+ gencost_name(2) = 'siv4-deconc',
+ gencost_datafile(2) = 'NSIDC_CAP_IceConc_SO3',
+ gencost_spmin(2) = -999.,
+ gencost_spmax(2) = 999.,
+ gencost_spzero(2) = -9999.,
+ gencost_outputlevel(2)=1,
+ mult_gencost(2) = 0.0001,
+#
+ gencost_avgperiod(3)  = 'day',
+ gencost_barfile(3) = 'm_siv4_exconc',
+ gencost_name(3) = 'siv4-exconc',
+ gencost_datafile(3) = 'NSIDC_CAP_IceConc_SO3',
+ gencost_spmin(3) = -999.,
+ gencost_spmax(3) = 999.,
+ gencost_spzero(3) = -9999.,
+ gencost_outputlevel(3)=1,
+ mult_gencost(3) = 0.01,
+#
+# SST -- this is normal gencost 
+ gencost_avgperiod(4)  = 'day',
+# gencost_startdate1(4) = 19980101,
+# gencost_startdate2(4) = 00000,
+ gencost_barfile(4) = 'm_sst_day',
+ gencost_datafile(4) = 'RSS_OISST_MWfusion_SO3.bin',
+# gencost_datafile(4) = 'RSS_OISST_MWfusion_SO3_0814.bin',
+ gencost_errfile(4) = 'SST_OI_Uncrtnty_SO3.bin',
+ gencost_name(4) = 'sst-MW',
+ gencost_spmin(4) = -1.8,
+ gencost_spmax(4) = 40.,
+ gencost_spzero(4) = 0.,
+ gencost_outputlevel(4)=1,
+ mult_gencost(4) = 0.1,
+# gencost_startdate1(4) = 19980101,
+# gencost_startdate2(4)= 00000,
+#
+# MDT SHOULD BE GIVEN IN METERS BUT SSH IN CM!!
+ gencost_datafile(5) = 'mdt_cnes_cls2013_SO3.bin',
+ gencost_errfile(5) = 'mdt_err.bin',
+ gencost_name(5) = 'sshv4-mdt',
+ gencost_outputlevel(5)=1,
+ mult_gencost(5) = 1.,
+# SSH IN CM
+ gencost_barfile(6) = 'm_eta_day',
+ gencost_datafile(6) = 'Rads_Jsn2_SO3_QC7.bin',
+ gencost_avgperiod(6)  = 'day',
+ gencost_errfile(6) = 'SSHanom_err.bin',
+ gencost_name(6) = 'sshv4-tp',
+ gencost_outputlevel(6)=1,
+ mult_gencost(6) = 0.01,
+# NEED TO IMPLEMENT
+# to add: GRACE=m_bp,  QSCAT
+# 
+#CLIM
+#REQUIRES DEFINE ALLOW_GENCOST3D
+##must keep gencost_barfile here
+# gencost_avgperiod(7)  = 'month',
+# gencost_barfile(7) = 'm_salt_mon',
+# gencost_datafile(7) = 'some_S_atlas.bin',
+# gencost_errfile(7) = 'sigma_surf_0p5.bin',
+# gencost_name(7) = 'sss_repeat',
+# gencost_spmin(7) = 25.,
+# gencost_spmax(7) = 40.,
+# gencost_spzero(7) = 0.,
+# mult_gencost(7) = 0.,
+#
+ /
+#

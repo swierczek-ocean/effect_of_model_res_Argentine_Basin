@@ -1,0 +1,155 @@
+# ====================
+# | Model parameters |
+# ====================
+#
+# Continuous equation parameters
+ &PARM01
+# global_oce_cs32 setup
+ viscAz=1.E-3,
+ viscAh=1.E3,
+ viscAhGrid=1.E-1,
+ diffKhT=1.E3,
+ diffKzT=1.E-5,
+ diffKhS=1.E3,
+ diffKzS=1.E-5,
+ bottomDragQuadratic = 0.001,
+ viscA4=1.E10,
+ diffK4T=1.E10,
+ diffK4S=1.E10,
+ viscC4Leith=2.0,
+ viscC4Leithd=2.0,
+ viscA4GridMax=0.8,
+ bottomDraglinear=1.E-4,
+# useAreaViscLength=.TRUE.,
+# tempVertAdvScheme=3,
+# saltVertAdvScheme=3,
+#CMM HIGH VISC
+# viscAz=1.E-3,
+# viscAh=1.E3,
+# viscA4=1.E9,
+# diffKhT=1.E3,
+# diffKzT=1.E-3,
+# diffKhS=1.E3
+# diffKzS=1.E-3,
+#CMM LOW VISC
+# viscAz=1.E-4,
+# viscAh=5.E1,
+# viscA4=1.E10,
+# diffK4T=1.E10,
+# diffKzT=1.E-5,
+# diffK4S=1.E10,
+# diffKzS=1.E-5,
+#CMM ##########
+ beta=1.E-11,
+ tAlpha=2.E-4,
+ sBeta =7.4E-4,
+ rhonil=1035.,
+ rhoConstFresh=1000.,
+ gravity=9.81,
+ eosType = 'JMD95Z',
+ implicitDiffusion=.true.,
+ implicitViscosity=.true.,
+ implicitFreeSurface=.true.,
+ convertFW2Salt = -1.,
+ useRealFreshWaterFlux=.FALSE.,
+ useCDscheme=.FALSE.,
+ useSingleCpuIO=.FALSE.,
+ vectorInvariantMomentum=.TRUE.,
+ staggerTimeStep=.TRUE.,
+ multiDimAdvection=.TRUE.,
+ tempAdvScheme=30,
+ saltAdvScheme=30,
+ useNHMTerms=.FALSE.,
+# turn on lopped cells
+ hFacMin=0.3,
+ hFacMindz=50.,
+# set precision of data files
+ readBinaryPrec=32,
+ writeBinaryPrec=32,
+ globalfiles=.FALSE.,
+ rotationPeriod=86164.,
+ debugLevel=0,
+ /
+
+# Elliptic solver parameters
+ &PARM02
+ cg2dMaxIters = 300,
+ cg2dTargetResidual=1.E-8,
+ /
+
+# Time stepping parameters
+ &PARM03
+ nIter0 =        17000,
+#1yr nTimeSteps = 35040,
+#2yr nTimeSteps = 70080,
+#3yr nTimeSteps = 105216,
+# nTimeSteps = 105168,
+#6yr = 210336
+# nTimeSteps = 2569,
+ nTimeSteps =  33000, 
+ deltaTmom   = 1800.0,
+ deltaTtracer= 1800.0,
+ deltaTClock = 1800.0,
+ pickupStrictlyMatch=.FALSE.,
+ dumpInitAndLast=.TRUE.
+# dumpInitAndLast=.FALSE.
+ abEps = 0.1,
+ pChkptFreq= 30600000.,
+#5184000.,
+# dumpFreq=  1155600.,
+# taveFreq=  1155600.,
+ dumpFreq=   0.,
+ taveFreq=   0.,
+# dumpFreq=   31536000.,
+# taveFreq=   31536000.,
+# diagFreq=    2629830.,
+ adjDumpFreq=  0.,
+ monitorFreq= 1800.0,
+ forcing_In_AB = .FALSE.,
+ /
+
+# Gridding parameters
+ &PARM04
+ usingCartesianGrid=.FALSE.,
+ usingSphericalPolarGrid=.TRUE.,
+ delX=192*0.333333334,
+ delY= 0.16553, 
+       0.16636, 0.1672, 0.16805, 0.16889, 0.16974, 0.17059, 0.17145, 0.1723, 0.17316, 0.17403, 
+       0.17489, 0.17576, 0.17663, 0.1775, 0.17838, 0.17925, 0.18013, 0.18102, 0.1819, 0.18279, 
+       0.18368, 0.18457, 0.18547, 0.18637, 0.18727, 0.18817, 0.18908, 0.18998, 0.19089, 0.1918, 
+       0.19272, 0.19363, 0.19455, 0.19547, 0.19639, 0.19732, 0.19824, 0.19917, 0.2001, 0.20103, 
+       0.20197, 0.2029, 0.20384, 0.20478, 0.20572, 0.20666, 0.20761, 0.20855, 0.2095, 0.21045, 
+       0.2114, 0.21235, 0.2133, 0.21426, 0.21521, 0.21617, 0.21713, 0.21809, 0.21905, 0.22001, 
+       0.22097, 0.22193, 0.2229, 0.22386, 0.22483, 0.22579, 0.22676, 0.22773, 0.22869, 0.22966, 
+       0.23063, 0.2316, 0.23257, 0.23354, 0.23451, 0.23548, 0.23645, 0.23742, 0.23839, 0.23936, 
+       0.24032, 0.24129, 0.24226, 0.24323, 0.2442, 0.24516, 0.24613, 0.2471, 0.24806, 0.24902, 
+       0.24999, 0.25095, 0.25191, 0.25287, 0.25382, 0.25478, 0.25574, 0.25669, 0.25764, 0.25859, 
+       0.25954, 0.26049, 0.26143, 0.26237, 0.26331, 0.26425, 0.26519, 0.26612, 0.26705, 0.26798, 
+       0.26891, 0.26983, 0.27075, 0.27167, 0.27258, 0.27349, 0.2744, 0.27531, 0.27621, 0.2771, 
+       0.278, 0.27889, 0.27978, 0.28066, 0.28154, 0.28241, 0.28328, 0.28415, 0.28501, 0.28587, 
+       0.28672,
+
+delZ= 4.2, 5, 
+       5.9, 6.9, 8.5, 9.5, 10, 10, 10, 10, 10, 10, 
+       10, 10, 10, 10, 13, 17, 20, 20, 20, 20, 
+       20, 20, 22, 30, 38, 45, 50, 50, 53, 72, 
+       100, 100, 100, 100, 100, 150, 200, 200, 200, 220, 
+       300, 380, 400, 400, 400, 400, 400, 400, 400, 400, 
+ ygOrigin = -60.3084869384766,
+ xgOrigin = 288.333333334,
+
+ /
+
+# Input datasets
+ &PARM05
+  bathyFile = 'SO3input/SO3_SOSE_12_bathy2_CB.bin',
+#  hydrogThetaFile='T.0000002016'
+#  hydrogSaltFile='S.0000002016'
+#  uVelInitFile='U.0000002016'
+#  vVelInitFile='V.0000002016'
+  uVelInitFile=   'SO3input/SO3_Uini_SO12_V1.bin',
+  vVelInitFile=   'SO3input/SO3_Vini_SO12_V1.bin',
+  hydrogThetaFile='SO3input/SO3_Tini_SO12_V1.bin',
+  hydrogSaltFile= 'SO3input/SO3_Sini_SO12_V1.bin',
+  mdsioLocalDir = '/tmp/',
+ /

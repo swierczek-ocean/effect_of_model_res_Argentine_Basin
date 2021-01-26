@@ -1,0 +1,255 @@
+# *********************
+# ECCO controlvariables
+# *********************
+ &ctrl_nml
+#
+ doSinglePrecTapelev=.TRUE.,
+ ctrlSmoothCorrel2D=.FALSE.,
+ ctrlSmoothCorrel3D=.FALSE.,
+#to start from given xx*00.data files
+# doinitxx = .FALSE.,
+# doMainUnpack = .FALSE.,
+#
+#doPackDiag = .TRUE.,
+# forcingPrecond=20.,
+# doZscalePack = .TRUE.,
+# doZscaleUnpack = .TRUE.,
+# delZexp = -1.,
+ /
+#
+# *********************
+# names for ctrl_pack/unpack
+# *********************
+ &ctrl_packnames
+ ctrlname='ecco_ctrl',
+ costname='ecco_cost',
+ /
+#
+# *********************
+# names for CTRL_GENARR, CTRL_GENTIM
+# *********************
+ &CTRL_NML_GENARR
+#  Ini Cndtns
+ xx_genarr3d_weight(1) = 'wt_theta.bin',
+ xx_genarr3d_file(1)='xx_theta',
+ xx_genarr3d_preproc(1,1)='smooth',
+# no bounds: xx_genarr3d_bounds(1:5,1)=-2.0,-1.9,39.,40.,0.,
+ mult_genarr3d(1) = .0001,
+#
+ xx_genarr3d_weight(2) = 'wt_salt.bin',
+ xx_genarr3d_file(2)='xx_salt',
+ xx_genarr3d_preproc(1,2)='smooth',
+# xx_genarr3d_bounds(1:5,2)=29.,29.5,40.5,41.,0.,
+ mult_genarr3d(2) = 0.001,
+#
+ xx_genarr3d_weight(3) = 'wt_DIC.bin',
+ xx_genarr3d_file(3)='xx_ptr1',
+ xx_genarr3d_preproc(1,3)='smooth',
+ mult_genarr3d(3) = 0.001,
+#
+ xx_genarr3d_weight(4) = 'wt_ALK.bin',
+ xx_genarr3d_file(4)='xx_ptr2',
+ xx_genarr3d_preproc(1,4)='smooth',
+ mult_genarr3d(4) = 0.001,
+#
+ xx_genarr3d_weight(5) = 'wt_O2.bin',
+ xx_genarr3d_file(5)='xx_ptr3',
+ xx_genarr3d_preproc(1,5)='smooth',
+ mult_genarr3d(5) = 0.001,
+#
+ xx_genarr3d_weight(6) = 'wt_NO3.bin',
+ xx_genarr3d_file(6)='xx_ptr4',
+ xx_genarr3d_preproc(1,6)='smooth',
+ mult_genarr3d(6) = 0.001,
+#
+ xx_genarr3d_weight(7) = 'wt_PO4.bin',
+ xx_genarr3d_file(7)='xx_ptr5',
+ xx_genarr3d_preproc(1,7)='smooth',
+ mult_genarr3d(7) = 0.001,
+#
+ xx_genarr3d_weight(8) = 'wt_FE.bin',
+ xx_genarr3d_file(8)='xx_ptr6',
+ xx_genarr3d_preproc(1,8)='smooth',
+ mult_genarr3d(8) = 0.001,
+#
+ xx_genarr2d_weight(1) = 'wt_Pc.bin',
+ xx_genarr2d_file(1)='xx_Pc',
+ xx_genarr2d_preproc(1,1)='smooth',
+ mult_genarr2d(1) = 0.001,
+#
+ xx_genarr2d_weight(2) = 'wt_k_Fe.bin',
+ xx_genarr2d_file(2)='xx_k_Fe',
+ xx_genarr2d_preproc(1,2)='smooth',
+ mult_genarr2d(2) = 0.001,
+#
+ xx_genarr2d_weight(3) = 'wt_alpha_photo.bin',
+ xx_genarr2d_file(3)='xx_alpha_photo',
+ xx_genarr2d_preproc(1,3)='smooth',
+ mult_genarr2d(3) = 0.001,
+#
+ xx_genarr2d_weight(4) = 'wt_gamma_POM.bin',
+ xx_genarr2d_file(4)='xx_gamma_POM',
+ xx_genarr2d_preproc(1,4)='smooth',
+ mult_genarr2d(4) = 0.001,
+#
+ xx_genarr2d_weight(5) = 'wt_wsink0.bin',
+ xx_genarr2d_file(5)='xx_wsink0',
+ xx_genarr2d_preproc(1,5)='smooth',
+ mult_genarr2d(5) = 0.001,
+#
+ xx_genarr2d_weight(6) = 'wt_phi_sm.bin',
+ xx_genarr2d_file(6)='xx_phi_sm',
+ xx_genarr2d_preproc(1,6)='smooth',
+ mult_genarr2d(6) = 0.001,
+#
+ xx_genarr2d_weight(7) = 'wt_phi_lg.bin',
+ xx_genarr2d_file(7)='xx_phi_lg',
+ xx_genarr2d_preproc(1,7)='smooth',
+ mult_genarr2d(7) = 0.001,
+#
+ xx_genarr2d_weight(8) = 'wt_phi_DOM.bin',
+ xx_genarr2d_file(8)='xx_phi_DOM',
+ xx_genarr2d_preproc(1,8)='smooth',
+ mult_genarr2d(8) = 0.001,
+##
+ xx_gentim2d_weight(1) = 'EIG_tmp2m_degC_wt_SO3.bin',
+ xx_gentim2d_file(1)='xx_atemp_anom',
+ xx_gentim2d_startdate1(1)=20130101,
+ xx_gentim2d_startdate2(1)=30000,
+ xx_gentim2d_period(1)=1209600.0,
+ xx_gentim2d_preproc(1,1)='rmcycle',
+ xx_gentim2d_preproc_i(1,1)=1,
+ xx_gentim2d_preproc(2,1)='smooth',
+ mult_gentim2d(1) = .0001,
+#
+ xx_gentim2d_weight(2) = 'EIG_tmp2m_degC_wt_SO3.bin',
+ xx_gentim2d_file(2)='xx_atemp_mean',
+ xx_gentim2d_startdate1(2)=20130101,
+ xx_gentim2d_startdate2(2)=30000,
+ xx_gentim2d_period(2)=1209600.0,
+ xx_gentim2d_preproc(1,2)='docycle',
+ xx_gentim2d_preproc_i(1,2)=1,
+ xx_gentim2d_preproc(2,2)='smooth',
+ mult_gentim2d(2) = .0001,
+#
+ xx_gentim2d_weight(3) = 'EIG_spfh2m_wt_SO3.bin',
+ xx_gentim2d_file(3)='xx_aqh_anom',
+ xx_gentim2d_startdate1(3)=20130101,
+ xx_gentim2d_startdate2(3)=30000,
+ xx_gentim2d_period(3)=1209600.0,
+ xx_gentim2d_preproc(1,3)='rmcycle',
+ xx_gentim2d_preproc_i(1,3)=1,
+ xx_gentim2d_preproc(2,3)='smooth',
+ mult_gentim2d(3) = .0001,
+#
+ xx_gentim2d_weight(4) = 'EIG_spfh2m_wt_SO3.bin',
+ xx_gentim2d_file(4)='xx_aqh_mean',
+ xx_gentim2d_startdate1(4)=20130101,
+ xx_gentim2d_startdate2(4)=30000,
+ xx_gentim2d_period(4)=1209600.0,
+ xx_gentim2d_preproc(1,4)='docycle',
+ xx_gentim2d_preproc_i(1,4)=1,
+ xx_gentim2d_preproc(2,4)='smooth',
+ mult_gentim2d(4) = .0001,
+#
+ xx_gentim2d_weight(5) = 'EIG_rain_wt_SO3.bin',
+ xx_gentim2d_file(5)='xx_precip_anom',
+ xx_gentim2d_startdate1(5)=20130101,
+ xx_gentim2d_startdate2(5)=30000,
+ xx_gentim2d_period(5)=1209600.0,
+ xx_gentim2d_preproc(1,5)='rmcycle',
+ xx_gentim2d_preproc_i(1,5)=1,
+ xx_gentim2d_preproc(2,5)='smooth',
+ mult_gentim2d(5) = .0001,
+#
+ xx_gentim2d_weight(6) = 'EIG_rain_wt_SO3.bin',
+ xx_gentim2d_file(6)='xx_precip_mean',
+ xx_gentim2d_startdate1(6)=20130101,
+ xx_gentim2d_startdate2(6)=30000,
+ xx_gentim2d_period(6)=1209600.0,
+ xx_gentim2d_preproc(1,6)='docycle',
+ xx_gentim2d_preproc_i(1,6)=1,
+ xx_gentim2d_preproc(2,6)='smooth',
+ mult_gentim2d(6) = .0001,
+#
+ xx_gentim2d_weight(7) = 'EIG_dsw_wt_SO3.bin',
+ xx_gentim2d_file(7)='xx_swdown_anom',
+ xx_gentim2d_startdate1(7)=20130101,
+ xx_gentim2d_startdate2(7)=30000,
+ xx_gentim2d_period(7)=1209600.0,
+ xx_gentim2d_preproc(1,7)='rmcycle',
+ xx_gentim2d_preproc_i(1,7)=1,
+ xx_gentim2d_preproc(2,7)='smooth',
+ mult_gentim2d(7) = .0001,
+#
+ xx_gentim2d_weight(8) = 'EIG_dsw_wt_SO3.bin',
+ xx_gentim2d_file(8)='xx_swdown_mean',
+ xx_gentim2d_startdate1(8)=20130101,
+ xx_gentim2d_startdate2(8)=30000,
+ xx_gentim2d_period(8)=1209600.0,
+ xx_gentim2d_preproc(1,8)='docycle',
+ xx_gentim2d_preproc_i(1,8)=1,
+ xx_gentim2d_preproc(2,8)='smooth',
+ mult_gentim2d(8) = .0001,
+#
+ xx_gentim2d_weight(9) = 'EIG_dlw_wt_SO3.bin',
+ xx_gentim2d_file(9)='xx_lwdown_anom',
+ xx_gentim2d_startdate1(9)=20130101,
+ xx_gentim2d_startdate2(9)=30000,
+ xx_gentim2d_period(9)=1209600.0,
+ xx_gentim2d_preproc(1,9)='rmcycle',
+ xx_gentim2d_preproc_i(1,9)=1,
+ xx_gentim2d_preproc(2,9)='smooth',
+ mult_gentim2d(9) = .0001,
+#
+ xx_gentim2d_weight(10) = 'EIG_dlw_wt_SO3.bin',
+ xx_gentim2d_file(10)='xx_lwdown_mean',
+ xx_gentim2d_startdate1(10)=20130101,
+ xx_gentim2d_startdate2(10)=30000,
+ xx_gentim2d_period(10)=1209600.0,
+ xx_gentim2d_preproc(1,10)='docycle',
+ xx_gentim2d_preproc_i(1,10)=1,
+ xx_gentim2d_preproc(2,10)='smooth',
+ mult_gentim2d(10) = .0001,
+#
+ xx_gentim2d_weight(11) = 'EIG_u10m_wt_SO3.bin',
+ xx_gentim2d_file(11)='xx_uwind_anom',
+ xx_gentim2d_startdate1(11)=20130101,
+ xx_gentim2d_startdate2(11)=30000,
+ xx_gentim2d_period(11)=1209600.0,
+ xx_gentim2d_preproc(1,11)='rmcycle',
+ xx_gentim2d_preproc_i(1,11)=1,
+ xx_gentim2d_preproc(2,11)='smooth',
+ mult_gentim2d(11) = .0001,
+#
+ xx_gentim2d_weight(12) = 'EIG_u10m_wt_SO3.bin',
+ xx_gentim2d_file(12)='xx_uwind_mean',
+ xx_gentim2d_startdate1(12)=20130101,
+ xx_gentim2d_startdate2(12)=30000,
+ xx_gentim2d_period(12)=1209600.0,
+ xx_gentim2d_preproc(1,12)='docycle',
+ xx_gentim2d_preproc_i(1,12)=1,
+ xx_gentim2d_preproc(2,12)='smooth',
+ mult_gentim2d(12) = .0001,
+#
+ xx_gentim2d_weight(13) = 'EIG_v10m_wt_SO3.bin',
+ xx_gentim2d_file(13)='xx_vwind_anom',
+ xx_gentim2d_startdate1(13)=20130101,
+ xx_gentim2d_startdate2(13)=30000,
+ xx_gentim2d_period(13)=1209600.0,
+ xx_gentim2d_preproc(1,13)='rmcycle',
+ xx_gentim2d_preproc_i(1,13)=1,
+ xx_gentim2d_preproc(2,13)='smooth',
+ mult_gentim2d(13) = .0001,
+#
+ xx_gentim2d_weight(14) = 'EIG_v10m_wt_SO3.bin',
+ xx_gentim2d_file(14)='xx_vwind_mean',
+ xx_gentim2d_startdate1(14)=20130101,
+ xx_gentim2d_startdate2(14)=30000,
+ xx_gentim2d_period(14)=1209600.0,
+ xx_gentim2d_preproc(1,14)='docycle',
+ xx_gentim2d_preproc_i(1,14)=1,
+ xx_gentim2d_preproc(2,14)='smooth',
+ mult_gentim2d(14) = .0001,
+#
+ /
