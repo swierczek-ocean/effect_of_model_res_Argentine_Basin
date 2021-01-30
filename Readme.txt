@@ -1,6 +1,3 @@
-# effect_of_model_res_Argentine_Basin_JGRO
-Code for "The effect of resolution on vertical heat and carbon transports in a regional ocean circulation model of the Argentine Basin"
-
 
 Instructions for reproducing regional model output: 
 
@@ -13,3 +10,5 @@ Instructions for reproducing regional model output:
 
 4) Run 13 month models at each resolution 
 (setups contained in /MITgcm + NBLINGv2/SO3_20190513/, /MITgcm + NBLINGv2/SO6_20190513/, and /MITgcm + NBLINGv2/SO12_20190513/)
+
+
