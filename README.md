@@ -1,6 +1,6 @@
 # effect_of_model_res_Argentine_Basin_JGRO
 Code for "The effect of resolution on vertical heat and carbon transports in a regional ocean circulation model of the Argentine Basin"
-
+https://doi.org/10.5281/zenodo.4488699
 
 Instructions for reproducing regional model output: 
 
